@@ -41,6 +41,8 @@ Follow these steps to set up and run the "php-practice-project" on your local ma
 
 1. **Prerequisites**: Make sure you have a web server (such as Apache), PHP, and MySQL installed.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/xampp.png)
+
 2. **Clone or Download**: Clone this repository to your local machine or download the ZIP file.
 
 3. **Database Setup**: Create a MySQL database named `student_system`. Import the provided SQL files (`student_list.sql` and `student_users.sql`) to set up the necessary tables and sample data.
