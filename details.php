@@ -25,6 +25,11 @@ if (isset($_GET['id'])) {
         // Update the notes in the database
         $updateSql = "UPDATE student_list SET notes = '$newNotes' WHERE ID = '$id'";
         $con->query($updateSql) or die($con->error);
+
+        // Display the "Edited successfully" alert
+        echo '<div class="alert alert-success mt-3" role="alert" id="successAlert">
+                Edited successfully!
+              </div>';
     }
 
     // Retrieve the record from the database using the provided ID
@@ -41,182 +46,136 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details - Student Management System</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="icon" href="img/php-logo.svg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
-        /* Integrate your CSS styles here */
-        /* For example, you can add styles for form elements */
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-color: #fff
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .form-label {
-            font-weight: bold;
+        .student-info p {
+            margin-bottom: 10px;
         }
 
-        .form-control {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 8px;
+        .notes-section {
+            padding-top: 20px;
         }
 
-        .btn-primary,
-        .btn-danger {
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+        .notes-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
         }
 
-        .btn-success {
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            background-color: #28a745;
-            border: none;
+        #notesTextarea {
+            resize: vertical;
         }
 
-        .btn-secondary {
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #6c757d;
-            color: #fff;
-            border: none;
+        .back-button {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="container mt-5 mb-3">
+    <div class="container mt-5">
         <h1 class="text-center">Student Details</h1>
     </div>
-    <div class="form-container">
-        <div class="col-md-6 student-info">
-            <p><strong>First Name:</strong>
-                <?php echo $row['first_name']; ?>
-            </p>
-            <p><strong>Last Name:</strong>
-                <?php echo $row['last_name']; ?>
-            </p>
-            <p><strong>Gender:</strong>
-                <?php echo $row['gender']; ?>
-            </p>
-        </div>
-        <div class="col-md-6 notes-section">
-            <p><strong>Notes:</strong></p>
-            <?php if ($_SESSION['Access'] === 'administrator') { ?>
-                <p id="originalNotes">
-                    <?php echo $row['notes']; ?>
-                </p>
-                <div class="notes-buttons">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <button id="editNotesButton" class="btn btn-primary">Edit Notes</button>
-                        </div>
-                        <div>
-                            <button id="cancelEditButton" class="btn btn-danger ml-2" style="display: none;">Cancel</button>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6 student-info">
+                <p><strong>First Name:</strong> <?php echo $row['first_name']; ?></p>
+                <p><strong>Last Name:</strong> <?php echo $row['last_name']; ?></p>
+                <p><strong>Gender:</strong> <?php echo $row['gender']; ?></p>
+            </div>
+            <div class="col-md-6 notes-section">
+                <h4>Notes:</h4>
+                <?php if ($_SESSION['Access'] === 'administrator') { ?>
+                    <p id="originalNotes"><?php echo $row['notes']; ?></p>
+                    <div class="notes-buttons">
+                        <div class="d-flex align-items-center">
+                            <button id="editNotesButton" class="btn btn-primary me-2">Edit Notes</button>
+                            <button id="cancelEditButton" class="btn btn-danger" style="display: none;">Cancel</button>
                         </div>
                     </div>
-                </div>
-                <script>
-                    const editNotesButton = document.getElementById("editNotesButton");
-                    const cancelEditButton = document.getElementById("cancelEditButton");
-                    const originalNotes = document.getElementById("originalNotes");
-                    const notesTextarea = document.createElement("textarea");
-                    notesTextarea.id = "notesTextarea";
-                    notesTextarea.className = "form-control mt-3";
-                    notesTextarea.rows = 4;
-                    notesTextarea.value = originalNotes.textContent.trim();
-                    let editingMode = false;
+                    <div id="notesTextareaDiv" style="display: none;">
+                        <textarea id="notesTextarea" class="form-control mt-3" rows="4"><?php echo $row['notes']; ?></textarea>
+                        <button id="updateNotesButton" class="btn btn-success mt-3">Update Note</button>
+                    </div>
+                    <div id="successAlert" class="alert alert-success mt-3" role="alert" style="display: none;">
+                        Edited successfully!
+                    </div>
+                    <script>
+                        const editNotesButton = document.getElementById("editNotesButton");
+                        const cancelEditButton = document.getElementById("cancelEditButton");
+                        const originalNotes = document.getElementById("originalNotes");
+                        const notesTextarea = document.getElementById("notesTextarea");
+                        const notesTextareaDiv = document.getElementById("notesTextareaDiv");
+                        const updateNotesButton = document.getElementById("updateNotesButton");
+                        let editingMode = false;
 
-                    editNotesButton.addEventListener("click", () => {
-                        if (editingMode) {
-                            originalNotes.style.display = "block";
-                            editNotesButton.style.display = "block";
-                            cancelEditButton.style.display = "none";
-                            notesTextarea.remove();
-                            updateButton.remove();
-                            editingMode = false;
-                        } else {
+                        editNotesButton.addEventListener("click", () => {
                             originalNotes.style.display = "none";
                             editNotesButton.style.display = "none";
                             cancelEditButton.style.display = "block";
-                            notesSection.appendChild(notesTextarea);
-                            notesSection.appendChild(updateButton);
+                            notesTextareaDiv.style.display = "block";
+                            notesTextarea.value = originalNotes.textContent.trim();
                             editingMode = true;
-                        }
-                    });
+                        });
 
-                    cancelEditButton.addEventListener("click", () => {
-                        originalNotes.style.display = "block";
-                        editNotesButton.style.display = "block";
-                        cancelEditButton.style.display = "none";
-                        notesTextarea.remove();
-                        updateButton.remove();
-                        editingMode = false;
-                    });
-
-                    const updateButton = document.createElement("button");
-                    updateButton.className = "btn btn-primary mt-3";
-                    updateButton.textContent = "Update Note";
-
-                    updateButton.addEventListener("click", () => {
-                        const newNotes = notesTextarea.value.trim();
-                        if (newNotes !== "" && newNotes !== originalNotes.textContent.trim()) {
-                            originalNotes.textContent = newNotes;
+                        cancelEditButton.addEventListener("click", () => {
                             originalNotes.style.display = "block";
                             editNotesButton.style.display = "block";
                             cancelEditButton.style.display = "none";
-                            notesTextarea.remove();
-                            updateButton.remove();
-                            alert("Note successfully updated!");
+                            notesTextareaDiv.style.display = "none";
                             editingMode = false;
+                        });
 
-                            // Send the updated note to the server
-                            const formData = new FormData();
-                            formData.append("updateNotes", "true");
-                            formData.append("new_notes", newNotes);
+                        updateNotesButton.addEventListener("click", () => {
+                            const newNotes = notesTextarea.value.trim();
+                            if (newNotes !== "" && newNotes !== originalNotes.textContent.trim()) {
+                                originalNotes.textContent = newNotes;
+                                originalNotes.style.display = "block";
+                                editNotesButton.style.display = "block";
+                                cancelEditButton.style.display = "none";
+                                notesTextareaDiv.style.display = "none";
+                                editingMode = false;
 
-                            fetch(window.location.href, {
-                                method: "POST",
-                                body: formData
-                            })
-                                .then(response => response.text())
-                                .then(data => console.log(data))
-                                .catch(error => console.error("Error:", error));
-                        }
-                    });
+                                // Send the updated note to the server
+                                const formData = new FormData();
+                                formData.append("updateNotes", "true");
+                                formData.append("new_notes", newNotes);
 
-                    const notesSection = document.querySelector(".notes-section");
-                </script>
-            <?php } else { ?>
-                <p>
-                    <?php echo $row['notes']; ?>
-                </p>
-            <?php } ?>
+                                fetch(window.location.href, {
+                                    method: "POST",
+                                    body: formData
+                                })
+                                    .then(response => response.text())
+                                    .then(data => console.log(data))
+                                    .catch(error => console.error("Error:", error));
+                            }
+                        });
+                    </script>
+                <?php } else { ?>
+                    <p><?php echo $row['notes']; ?></p>
+                <?php } ?>
+            </div>
         </div>
-        <div class="back-button mt-3">
+        <div class="back-button">
             <a href="index.php" class="btn btn-secondary">Back</a>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

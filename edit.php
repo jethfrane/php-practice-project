@@ -65,49 +65,73 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit - Student Management System</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css"> <!-- custom styles if needed -->
     <link rel="icon" href="img/php-logo.svg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Integrate your CSS styles here */
-        /* For example, you can add styles for form elements */
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .header-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .header-link button {
+            background-color: #d9534f;
+            border-color: #d9534f;
+        }
+
         .form-container {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .form-label {
             font-weight: bold;
         }
-        
+
         .form-control {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 8px;
         }
-        
-        .btn-primary, .btn-danger {
-            padding: 10px 20px;
+
+        .form-select {
+            border: 1px solid #ccc;
             border-radius: 5px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        .btn-primary,
+        .btn-danger {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
             cursor: pointer;
         }
-        
+
         .btn-success {
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
             cursor: pointer;
             color: #fff;
             background-color: #28a745;
             border: none;
         }
-        
+
         .btn-secondary {
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
             cursor: pointer;
             background-color: #6c757d;
             color: #fff;
@@ -118,7 +142,12 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Edit Student Details</h1>
+        <div class="header-link">
+            <div>
+                <h3 class="">Edit Student Details</h3>
+            </div>
+        </div>
+        <br>
         <div class="form-container">
             <form action="" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -133,8 +162,10 @@ if (isset($_GET['id'])) {
                 <div class="mb-3">
                     <label class="form-label">Gender</label>
                     <select name="gender" class="form-select">
-                        <option value="Male" <?php if ($row['gender'] === 'Male') echo 'selected'; ?>>Male</option>
-                        <option value="Female" <?php if ($row['gender'] === 'Female') echo 'selected'; ?>>Female</option>
+                        <option value="Male" <?php if ($row['gender'] === 'Male')
+                            echo 'selected'; ?>>Male</option>
+                        <option value="Female" <?php if ($row['gender'] === 'Female')
+                            echo 'selected'; ?>>Female</option>
                     </select>
                 </div>
                 <button type="submit" name="update" class="btn btn-primary">Update</button>

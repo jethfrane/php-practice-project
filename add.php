@@ -14,6 +14,10 @@ include_once("connections/connection.php");
 // Establish a database connection
 $con = connection();
 
+// Initialize variables
+$noteAdded = false;
+$noteText = "";
+
 // Check if the "Add" button is clicked
 if (isset($_POST['add'])) {
     $fname = $_POST['firstname'];
@@ -28,6 +32,19 @@ if (isset($_POST['add'])) {
     echo '<div class="alert alert-success mt-3" role="alert">
             Student added successfully!
           </div>';
+
+    // Check if the note text is provided
+    if (!empty($_POST['note_text'])) {
+        $studentId = $con->insert_id; // Get the ID of the inserted student
+        $noteText = $_POST['note_text'];
+
+        // Update the note in the database
+        $updateSql = "UPDATE student_list SET notes = '$noteText' WHERE id = '$studentId'";
+        $con->query($updateSql) or die($con->error);
+
+        // Set the flag to indicate that a note has been added
+        $noteAdded = true;
+    }
 }
 ?>
 
@@ -52,37 +69,22 @@ if (isset($_POST['add'])) {
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .form-label {
-            font-weight: bold;
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        
-        .form-control {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 8px;
-        }
-        
-        .btn-primary {
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
+
+        .btn-primary,
         .btn-secondary {
-            padding: 10px 20px;
             border-radius: 5px;
-            cursor: pointer;
-            background-color: #6c757d;
-            color: #fff;
-            border: none;
         }
     </style>
 </head>
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Add New Student</h1>
+        <h1 class="mb-4">Add New Student and Note</h1>
         <div class="form-container">
             <form action="" method="post">
                 <div class="mb-3">
@@ -99,6 +101,10 @@ if (isset($_POST['add'])) {
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Note Text</label>
+                    <textarea name="note_text" class="form-control" rows="4"></textarea>
                 </div>
                 <button type="submit" name="add" class="btn btn-primary">Add Student</button>
             </form>
