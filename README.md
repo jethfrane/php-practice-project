@@ -41,8 +41,6 @@ Follow these steps to set up and run the "php-practice-project" on your local ma
 
 1. **Prerequisites**: Make sure you have a web server (such as Apache), PHP, and MySQL installed.
 
-![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/xampp.png)
-
 2. **Clone or Download**: Clone this repository to your local machine or download the ZIP file.
 
 3. **Database Setup**: Create a MySQL database named `student_system`. Import the provided SQL files (`student_list.sql` and `student_users.sql`) to set up the necessary tables and sample data.
@@ -76,15 +74,19 @@ Welcome to the **php-practice-project**! This project serves as a practical plat
 
 1. **Web Server**: You'll need a web server to run PHP scripts. You can use Apache, Nginx, or XAMPP/WAMP for an all-in-one solution.
 
-
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/xampp.png)
 
 2. **PHP and MySQL**: Ensure that PHP and MySQL are installed on your system.
 
 3. **Text Editor or IDE**: Choose a text editor or integrated development environment (IDE) to edit and manage the project files.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/vscode.png)
+
 ## Installation Steps
 
 1. **Clone or Download the Repository**: Start by cloning this repository to your local machine or downloading the ZIP file and extracting it.
+
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/clone-repository.png)
 
 2. **Database Setup**:
 
@@ -92,20 +94,29 @@ Welcome to the **php-practice-project**! This project serves as a practical plat
    - Create a new database named `student_system`.
    - Import the provided SQL files (`student_list.sql` and `student_users.sql`) into the `student_system` database. These files contain the table structures and sample data.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/db-student_users.png)
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/db-student_list.png)
+
 3. **Configure Database Connection**:
 
    - Navigate to the `connections` directory and open the `connection.php` file.
    - Update the database connection credentials (hostname, username, password) based on your local MySQL setup.
+
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/setup-connection-php.png)
 
 4. **Web Server Setup**:
 
    - Place the project files in the appropriate directory of your web server (e.g., `htdocs` for XAMPP or WAMP).
    - Start your web server.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/xampp-htdocs.png)
+
 5. **Access the Application**:
 
    - Open a web browser and enter the URL of the project's directory (e.g., `http://localhost/php-practice-project`).
    - You'll be redirected to the login page.
+
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/localhost-login-page.png)
 
 6. **Login**:
 
@@ -119,15 +130,29 @@ Once logged in, you can explore the project and interact with its features:
 
 - **Dashboard**: After logging in, you'll be taken to the dashboard where you can view the list of students and perform various actions.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/index-page.png)
+
 - **Search**: Use the search bar to search for students based on their first name or last name.
+
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/index-search.png)
 
 - **View and Edit Student Details**: Click on the "View" button to see detailed information about a student. Administrators can also edit student details on this page.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/details-page-edited.png)
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/edit-delete-page.png)
+
 - **Update Notes**: On the student details page, administrators and users can update notes for the student.
+
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/details-page-edit.png)
 
 - **Add New Student**: Administrators can add new students by clicking the "Add New" button on the dashboard.
 
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/add-student-page.png)
+
 - **Download CSV**: Administrators can download the student records in CSV format by clicking the "Download as .csv" button.
+
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/download-csv.png)
+![Screenshot](https://github.com/jethfrane/php-practice-project/blob/main/img/save-csv.png)
 
 ## Conclusion
 
