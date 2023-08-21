@@ -58,8 +58,6 @@ if (isset($_POST['updateNotes'])) {
     <link rel="icon" href="img/php-logo.svg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Integrate your CSS styles here */
-        /* For example, you can add styles for the form container */
         .form-container {
             max-width: 600px;
             margin: 0 auto;
