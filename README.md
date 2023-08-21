@@ -2,9 +2,9 @@
 
 "php-practice-project" is a student management system showcasing PHP and MySQL skills. This project provides a comprehensive opportunity to learn and practice basic backend development with PHP, database management with MySQL, and frontend functionalities. It features user authentication, record management, search functionality, and notes updating."
 
-## Project Preview
+## Watch the video for project preview
 
-[Watch the Video](https://youtu.be/yO519BKyuPk)
+[![Watch the Video](https://img.youtube.com/vi/yO519BKyuPk/0.jpg)](https://youtu.be/yO519BKyuPk)
 
 ## Table of Contents
 
