@@ -82,7 +82,7 @@ if (isset($_POST['add'])) {
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Add New Student and Note</h1>
+        <h1 class="mb-4 text-center">Add New Student</h1>
         <div class="form-container">
             <form action="" method="post">
                 <div class="mb-3">
