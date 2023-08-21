@@ -1,0 +1,60 @@
+/* Apply Arial font to the whole body */
+body {
+    font-family: "Arial";
+}
+
+/* Styling for the table */
+table {
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Styling for table headers and cells */
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternate background color for even rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Styling for header links */
+.header-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for header link anchors */
+.header-links a {
+    margin-left: 10px;
+}
+
+/* Styling for "Add New" link in header */
+.header-links .add-new-link {
+    margin-left: auto;
+}
+
+/* Styling for header links (repeated, remove this block) */
+.header-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for header link anchors (repeated, remove this block) */
+.header-links a {
+    margin-left: 10px;
+}
+
+/* Styling for "Add New" button in header */
+.header-links .add-new-button {
+    margin-left: auto;
+}
+
+/* Add spacing to the buttons */
+.add-new-button, #edit-button {
+    margin-right: 10px;
+}

@@ -1,0 +1,98 @@
+/* Apply Arial font to the whole body */
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add default margin and padding to the entire page */
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Center-align the heading */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Styling for the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+/* Styling for table headers and cells */
+th,
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternate background color for even rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Styling for header links */
+.header-links {
+    display: flex;
+    align-items: left;
+    padding: 10px 0;
+}
+
+/* Styling for header link anchors */
+.header-links a {
+    margin-left: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Styling for "Add New" link in header */
+.add-new-button {
+    margin-left: auto;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for the Download CSV button */
+#download-csv-button {
+    margin-left: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Style for items per page and pagination */
+.items-per-page,
+.pagination {
+    text-align: right;
+}
+
+.pagination a {
+    margin: 3px;
+    padding: 3px;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    color: #333;
+    justify-content: end;
+}
+
+.pagination a.active {
+    background-color: #333;
+    color: #fff;
+}

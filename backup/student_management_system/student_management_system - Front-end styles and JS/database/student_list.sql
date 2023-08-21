@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2023 at 08:54 AM
+-- Generation Time: Aug 18, 2023 at 12:57 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -58,8 +58,7 @@ INSERT INTO `student_list` (`id`, `first_name`, `last_name`, `birth_day`, `added
 (1022, 'Liam ', 'Johnson', '', '2023-08-18 18:13:25', 'Male', 'A tech enthusiast passionate about developing innovative apps.'),
 (1023, 'Olivia', 'Williams', '', '2023-08-18 18:13:51', 'Male', 'An avid traveler and photographer capturing moments around the globe.'),
 (1024, 'Noah', 'Brown', '', '2023-08-18 18:14:24', 'Male', 'A fitness enthusiast and personal trainer helping others achieve their goals.'),
-(1025, 'Ava', 'Jones', '', '2023-08-18 18:15:15', 'Male', 'A food blogger with a knack for creating delectable recipes.'),
-(1026, 'Jethro', 'Frane', '', '2023-08-19 04:37:19', 'Male', '3rd Year BSIT Student.');
+(1025, 'Ava', 'Jones', '', '2023-08-18 18:15:15', 'Male', 'A food blogger with a knack for creating delectable recipes.');
 
 --
 -- Indexes for dumped tables
@@ -79,7 +78,7 @@ ALTER TABLE `student_list`
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1028;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1026;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

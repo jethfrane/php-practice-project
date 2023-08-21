@@ -52,23 +52,23 @@ if (isset($_POST['add'])) {
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+        
         .form-label {
             font-weight: bold;
         }
-
+        
         .form-control {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 8px;
         }
-
+        
         .btn-primary {
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
         }
-
+        
         .btn-secondary {
             padding: 10px 20px;
             border-radius: 5px;

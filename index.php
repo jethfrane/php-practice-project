@@ -53,8 +53,8 @@ if (isset($_GET['search'])) {
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="search">Search:</label>
-                    <input type="text" id="search" name="search" class="form-control" placeholder="First or Last name"
-                        value="<?php echo $searchTerm; ?>">
+                    <input type="text" id="search" name="search" class="form-control"
+                        placeholder="First or Last name" value="<?php echo $searchTerm; ?>">
                 </div>
             </div>
         </form>
